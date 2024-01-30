@@ -40,14 +40,13 @@ export const addTransaction: ExpressFunction = async (req, res) => {
 
 export const deleteTransaction: ExpressFunction = async (req, res) => {
   try {
-    var parsedBody = req.params
-    console.log("id: ", parsedBody.id);
-    await Transaction.findByIdAndDelete(parsedBody.id);
+    const transactionId = req.params.id    
+    await Transaction.findByIdAndDelete(transactionId);
 
     res.status(200).json({
       status: "success",
       data: {
-        msg: "deleted:" + parsedBody.id,
+        msg: "deleted:" + transactionId,
       },
     });
   } catch (err) {

@@ -35,3 +35,6 @@ lerna-debug.log*
 
 # Environmental Variables
 *.env
+
+# auto-genereated code
+.tsbuildinfo
