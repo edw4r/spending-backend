@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
 app.use((req, res, next) => {
   console.log("Hello from the middleware 👋");
   next();
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use("/api/v1/todos", todoRouter);
+
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to Our Express Server!!!!");
 });

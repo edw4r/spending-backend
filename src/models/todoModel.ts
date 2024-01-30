@@ -11,6 +11,7 @@ const todoSchema = new Schema({
   completed: {
     type: Boolean,
   },
+  
 });
 
 type Todo = InferSchemaType<typeof todoSchema>;
