@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 import app from "./app";
+import swaggerDocs from "./utils/swagger";
 
 if (
   process.env.DATABASE === undefined ||
@@ -32,4 +33,5 @@ const PORT: string | number = process.env.PORT ?? 8000;
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
+  swaggerDocs(app, PORT);
 });
