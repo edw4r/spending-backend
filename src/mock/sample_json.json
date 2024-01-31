@@ -1,7 +1,23 @@
-{
-  "title": "Grocery Shopping",
-  "category": "Food",
-  "amount": "50.00",
-  "payment": "cash",
-  "payDate": "2024-01-30T12:30:00.000Z"
-}
+[
+    {
+      "name": "Grocery Shopping",
+      "description": "Food",
+      "amount": "50.00",
+      "payment": "cash",
+      "payDate": "2024-01-30T12:30:00.000Z"
+    },
+    {
+        "name": "Grocery Shopping 2",
+        "description": "Food 2",
+        "amount": "50.00",
+        "payment": "cash",
+        "payDate": "2024-01-30T12:30:00.000Z"
+      },
+      {
+        "name": "Grocery Shopping 3",
+        "description": "Food3 ",
+        "amount": "50.00",
+        "payment": "cash",
+        "payDate": "2024-01-30T12:30:00.000Z"
+      }
+]
