@@ -17,9 +17,6 @@
         "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
         "incremental": true
     },
-    "ts-node": {
-        "esm": true
-    },
     "include": ["./src/**/*", "./test/**/*"],
     "exclude": ["node_modules", "dist"]
 }
