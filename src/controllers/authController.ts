@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/ban-types */
-import { type Response, type CookieOptions, type NextFunction } from 'express'
-import jwt from 'jsonwebtoken'
+import { type Request ,type Response, type CookieOptions, type NextFunction } from 'express'
+import jwt, {JwtPayload} from 'jsonwebtoken'
 import User from '../models/userModel'
 import { type ExpressFunction } from '../types/expressFunction'
 import { type IUser } from '../types/user'
@@ -90,6 +90,7 @@ export const login: ExpressFunction = async (req, res) => {
         }
 
         // 3) If everything ok, send token to client
+        // @ts-ignore
         createSendToken(user, 200, res)
     } catch (err) {
         return res.status(400).json({
@@ -99,14 +100,17 @@ export const login: ExpressFunction = async (req, res) => {
     }
 }
 
-export const protect: ExpressFunction = async (req, res, next) => {
+export const protect = async (req:Request, res:Response, next:NextFunction) => {
     try {
         // 1) Getting token and check of it's there
         let token
         if (
+            // @ts-ignore
             req.headers.authorization &&
+            // @ts-ignore
             req.headers.authorization.startsWith('Bearer')
         ) {
+            // @ts-ignore
             token = req.headers.authorization.split(' ')[1]
         }
 
@@ -122,6 +126,7 @@ export const protect: ExpressFunction = async (req, res, next) => {
 
         const currentUser = await User.findById(decoded.id)
 
+        // @ts-ignore
         req.user = currentUser
 
         next()
@@ -137,7 +142,9 @@ export const restrictTo = (...roles: Array<'admin' | 'user'>) => {
     return (req: Request, res: Response, next: NextFunction) => {
         // roles ['admin', 'user']. role='user'
 
+        // @ts-ignore
         if (!roles.includes(req.user.role)) {
+            // @ts-ignore
             console.log('Current user in restrictTo Function', req.user)
 
             return res.status(401).json({

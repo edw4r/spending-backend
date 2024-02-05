@@ -1,11 +1,18 @@
 import express from "express";
 import { addTransaction, deleteTransaction, getAllTransaction } from "../controllers/transactionController";
+import {
+    signup,
+    login,
+    protect,
+    restrictTo,
+} from '../controllers/authController'
+
 const router = express.Router();
 
-// http://localhost:8000/transaction
+// http://localhost:8000/api/v1/transaction
 router.route("/")
-.get(getAllTransaction) // GET  http://localhost:8000/transaction
-.post(addTransaction) // POST  http://localhost:8000/transaction
+.get(protect, getAllTransaction) // GET 
+.post(addTransaction) // POST  
 
 router.delete("/:id", deleteTransaction)
 
